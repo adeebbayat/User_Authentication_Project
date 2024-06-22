@@ -3,10 +3,16 @@ const path = require('path');
 const PORT = 3000;
 const app = express();
 
-
+// in order to get email and password from form to actually show up in request
+app.use(express.urlencoded());
 
 app.get('/', (req,res) => {
   res.sendFile(path.resolve(__dirname,'../client/index.html'))
+})
+
+app.post('/api/login', (req,res) => {
+  console.log(req.body)
+  res.redirect('/')
 })
 
 /**
